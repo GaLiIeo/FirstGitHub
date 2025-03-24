@@ -1,0 +1,136 @@
+<section class="experience">
+    <h2>Professional Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>Student Ambassador</h3>
+            <p class="company">BLACKBOX AI</p>
+            <p class="duration">Sept 2024 - Present</p>
+            <ul>
+                <li>Promote the BLACKBOX AI Mavericks program within the student community</li>
+                <li>Serve as a key point of contact for program updates and discussions</li>
+                <li>Encourage peer participation in AI-related activities</li>
+                <li>Assist in providing resources and guidance to students interested in AI</li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <h3>Team Member</h3>
+            <p class="company">Tim Hortons</p>
+            <p class="duration">Jan 2024 - Present</p>
+            <ul>
+                <li>Provide excellent customer service and handle customer orders</li>
+                <li>Maintain inventory levels and ensure workspace cleanliness</li>
+                <li>Operate POS system and manage transactions</li>
+                <li>Assist in training new employees</li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <h3>PHP Developer</h3>
+            <p class="company">Riyank Technologies</p>
+            <p class="duration">May 2022 - July 2022</p>
+            <ul>
+                <li>Developed server-side and user-side code using PHP, HTML, CSS, and JavaScript</li>
+                <li>Created software components linking programs to online services</li>
+                <li>Diagnosed and resolved technical issues in live environments</li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <h3>Project Intern</h3>
+            <p class="company">Epitome Corporation Pvt. Ltd</p>
+            <p class="duration">Sept 2021 - Sept 2021</p>
+            <ul>
+                <li>Assisted in solving technical problems and understanding OBS Studio</li>
+                <li>Coordinated meetings and maintained records for multinational corporations</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.experience {
+    padding: 4rem 2rem;
+}
+
+.experience h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.company {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.duration {
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-item ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.timeline-item li {
+    margin-bottom: 0.5rem;
+    color: var(--light-text-color);
+    position: relative;
+}
+
+.timeline-item li::before {
+    content: "▹";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .experience {
+        padding: 2rem 1rem;
+    }
+    
+    .timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-item {
+        padding-left: 1.5rem;
+    }
+}
+</style>

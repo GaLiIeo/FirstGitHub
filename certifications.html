@@ -1,0 +1,104 @@
+<section class="certifications">
+    <h2>Certifications</h2>
+    <div class="certifications-grid">
+        <div class="certification-card">
+            <h3>JavaScript Essential Training</h3>
+            <p class="issuer">LinkedIn Learning</p>
+            <p class="date">Dec 2024</p>
+        </div>
+        <div class="certification-card">
+            <h3>Google Analytics (GA) Essential Training</h3>
+            <p class="issuer">LinkedIn Learning</p>
+            <p class="date">Dec 2024</p>
+        </div>
+        <div class="certification-card">
+            <h3>Advanced Google Analytics (GA4)</h3>
+            <p class="issuer">LinkedIn Learning</p>
+            <p class="date">Dec 2024</p>
+        </div>
+        <div class="certification-card">
+            <h3>Git Version Control</h3>
+            <p class="issuer">LinkedIn Learning</p>
+            <p class="date">Sept 2024</p>
+        </div>
+        <div class="certification-card">
+            <h3>Python Programming</h3>
+            <p class="issuer">LinkedIn Learning</p>
+            <p class="date">Sept 2024</p>
+        </div>
+        <div class="certification-card">
+            <h3>Data Science for Engineers</h3>
+            <p class="issuer">IIDE - The Digital School</p>
+            <p class="date">May 2022</p>
+        </div>
+        <div class="certification-card">
+            <h3>Azure GitHub - Code to Cloud</h3>
+            <p class="issuer">Microsoft & GitHub</p>
+            <p class="date">Mar 2021</p>
+        </div>
+        <div class="certification-card">
+            <h3>AWS Fundamentals: Going Cloud-Native</h3>
+            <p class="issuer">Amazon Cloud (Coursera)</p>
+            <p class="date">Oct 2020</p>
+        </div>
+    </div>
+</section>
+
+<style>
+.certifications {
+    padding: 4rem 2rem;
+    background-color: var(--card-background);
+}
+
+.certifications h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certification-card {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+}
+
+.certification-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.issuer {
+    color: var(--light-text-color);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    color: var(--light-text-color);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .certifications {
+        padding: 2rem 1rem;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

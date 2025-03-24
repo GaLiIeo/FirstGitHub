@@ -1,0 +1,107 @@
+<section class="skills">
+    <h2>Skills & Expertise</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>Programming & Development</h3>
+            <ul>
+                <li><img src="images/javascript.svg" alt="JavaScript" class="skill-icon"> JavaScript</li>
+                <li><img src="images/python.svg" alt="Python" class="skill-icon"> Python</li>
+                <li><img src="images/sql.svg" alt="SQL" class="skill-icon"> SQL</li>
+                <li><img src="images/nodejs.svg" alt="Node.js" class="skill-icon"> Node.js</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Cloud & DevOps</h3>
+            <ul>
+                <li><img src="images/azure.svg" alt="Azure" class="skill-icon"> Azure</li>
+                <li><img src="images/aws.svg" alt="AWS" class="skill-icon"> AWS (EC2, S3)</li>
+                <li><img src="images/github.svg" alt="GitHub" class="skill-icon"> GitHub Actions</li>
+                <li><img src="images/git.svg" alt="Git" class="skill-icon"> Git & CI/CD</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Databases & APIs</h3>
+            <ul>
+                <li><img src="images/mysql.svg" alt="MySQL" class="skill-icon"> MySQL</li>
+                <li><img src="images/restapi.svg" alt="REST API" class="skill-icon"> REST APIs</li>
+                <li><img src="images/php.svg" alt="PHP" class="skill-icon"> PHP Development</li>
+                <li><img src="images/ai.svg" alt="AI" class="skill-icon"> AI Technologies</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+.skills {
+    background-color: var(--card-background);
+    padding: 4rem 2rem;
+}
+
+.skills h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+}
+
+.skill-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-card li {
+    margin-bottom: 0.8rem;
+    color: var(--light-text-color);
+    position: relative;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.skill-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .skills {
+        padding: 2rem 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

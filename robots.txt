@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.github/
+
+Sitemap: https://GaLiIeo.github.io/aniket.github.io/sitemap.xml 

@@ -1,80 +1,185 @@
-<!--Changes ib 24/03/2025-->
+<!--
+Date: 24/03/2025
+Author: Aniket Mishra
+Purpose: Professional portfolio website with interactive elements
+Copyright © 2025 Aniket Mishra. All rights reserved.
+This code may not be used without explicit permission and proper attribution.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta information for responsive design and character encoding -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniket Mishra</title>
+    <title>Aniket Mishra | Portfolio</title>
+    
+    <!-- External stylesheet links -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Enhanced animation libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Particle.js library for background animation -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 </head>
-<body>
-    <!-- Color Mode Switch -->
+<body data-scroll-container>
+    <!-- Interactive particle background canvas -->
+    <div id="particles-js"></div>
+
+    <!-- Theme toggle button to switch between light and dark modes -->
     <div class="color-switch">
         <button id="theme-toggle">Toggle Theme</button>
     </div>
 
-    <!-- Left Side Panel -->
+    <!-- Left side panel with profile information and social links -->
     <aside class="side-panel">
+        <!-- Profile section with photo, name and profession -->
         <div class="profile">
-            <img src="images/aniket.jpg" alt="Aniket Mishra">
+            <div class="profile-image-container">
+                <img src="public/image/aniket photo.png" alt="Aniket Mishra">
+            </div>
             <h1>Aniket Mishra</h1>
-            <p>Business & Information Systems Specialist</p>
+            <p class="typing-text" data-text="Business & Information Systems Specialist"></p>
         </div>
+        
+        <!-- Social media and contact links with icons -->
         <div class="social-links">
-            <a href="https://github.com/aniket" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/aniketmishra267" target="_blank">LinkedIn</a>
-            <a href="mailto:mishraaniket267@gmail.com">Email</a>
+            <a href="https://github.com/GaLiIeo" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/aniketmishra267" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:mishraaniket267@gmail.com"><i class="far fa-envelope"></i></a>
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Intro Section -->
-        <section id="intro" class="animate-on-scroll">
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav-toggle">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <ul>
+                <li><a href="#intro" class="mobile-nav-link">Home</a></li>
+                <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+                <li><a href="#gallery" class="mobile-nav-link">Portfolio</a></li>
+                <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+                <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content area with all portfolio sections -->
+    <main data-scroll-section>
+        <!-- Introduction section with personal greeting and resume link -->
+        <section id="intro" class="animate-on-scroll" data-aos="fade-up">
             <h2>Hi, I'm Aniket</h2>
-            <p>I'm a Business & Information Systems Specialist with experience in web development, cloud services, and AI technologies.</p>
+            <p class="intro-text" data-text="I'm a Business & Information Systems Specialist with experience in web development, cloud services, and AI technologies."></p>
             <a href="Aniket.pdf" target="_blank" class="btn">View Resume</a>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="animate-on-scroll">
+        <!-- Skills section with progress bars and technology categories -->
+        <section id="skills" class="animate-on-scroll" data-aos="fade-up">
             <h2>Skills</h2>
             <div class="skills-grid">
-                <div class="skill-card">
+                <!-- Programming and development skills card -->
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
                     <h3>Programming & Development</h3>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="90"></div>
+                    </div>
                     <ul>
-                        <li><img src="images/javascript.svg" alt="JavaScript" class="skill-icon"> JavaScript</li>
-                        <li><img src="images/python.svg" alt="Python" class="skill-icon"> Python</li>
-                        <li><img src="images/sql.svg" alt="SQL" class="skill-icon"> SQL</li>
-                        <li><img src="images/nodejs.svg" alt="Node.js" class="skill-icon"> Node.js</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fas fa-database"></i> SQL</li>
+                        <li><i class="fab fa-node-js"></i> Node.js</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+                
+                <!-- Cloud and DevOps skills card -->
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
                     <h3>Cloud & DevOps</h3>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="85"></div>
+                    </div>
                     <ul>
-                        <li><img src="images/azure.svg" alt="Azure" class="skill-icon"> Azure</li>
-                        <li><img src="images/aws.svg" alt="AWS" class="skill-icon"> AWS (EC2, S3)</li>
-                        <li><img src="images/github.svg" alt="GitHub" class="skill-icon"> GitHub Actions</li>
-                        <li><img src="images/git.svg" alt="Git" class="skill-icon"> Git & CI/CD</li>
+                        <li><i class="fab fa-microsoft"></i> Azure</li>
+                        <li><i class="fab fa-aws"></i> AWS (EC2, S3)</li>
+                        <li><i class="fab fa-github"></i> GitHub Actions</li>
+                        <li><i class="fab fa-git-alt"></i> Git & CI/CD</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+                
+                <!-- Databases and API skills card -->
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
                     <h3>Databases & APIs</h3>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="80"></div>
+                    </div>
                     <ul>
-                        <li><img src="images/mysql.svg" alt="MySQL" class="skill-icon"> MySQL</li>
-                        <li><img src="images/restapi.svg" alt="REST API" class="skill-icon"> REST APIs</li>
-                        <li><img src="images/php.svg" alt="PHP" class="skill-icon"> PHP Development</li>
-                        <li><img src="images/ai.svg" alt="AI" class="skill-icon"> AI Technologies</li>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                        <li><i class="fas fa-server"></i> REST APIs</li>
+                        <li><i class="fab fa-php"></i> PHP Development</li>
+                        <li><i class="fas fa-robot"></i> AI Technologies</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="animate-on-scroll">
+        <!-- Portfolio projects gallery with interactive overlays -->
+        <section id="gallery" class="animate-on-scroll" data-aos="fade-up">
+            <h2>Portfolio Projects</h2>
+            <div class="photo-gallery">
+                <!-- Web Application project showcase -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item-inner">
+                        <img src="public/image/projects/web-project.jpg" alt="Web Application Project">
+                        <div class="gallery-overlay">
+                            <h3>Web Application</h3>
+                            <p>Full-stack development with React and Node.js</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud Architecture project showcase -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item-inner">
+                        <img src="public/image/projects/cloud-project.jpg" alt="Cloud Infrastructure">
+                        <div class="gallery-overlay">
+                            <h3>Cloud Architecture</h3>
+                            <p>Enterprise solutions using AWS and Azure</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI and Machine Learning project showcase -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-item-inner">
+                        <img src="public/image/projects/ai-project.jpg" alt="Data Analytics">
+                        <div class="gallery-overlay">
+                            <h3>AI & Machine Learning</h3>
+                            <p>Intelligent data analytics solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience section with timeline of professional roles -->
+        <section id="experience" class="animate-on-scroll" data-aos="fade-up">
             <h2>Experience</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <!-- Student Ambassador role -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
                     <h3>Student Ambassador</h3>
                     <p class="company">BLACKBOX AI</p>
                     <p class="duration">Sept 2024 - Present</p>
@@ -85,7 +190,9 @@
                         <li>Assist in providing resources and guidance to students interested in AI</li>
                     </ul>
                 </div>
-                <div class="timeline-item">
+                
+                <!-- Tim Hortons role -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
                     <h3>Team Member</h3>
                     <p class="company">Tim Hortons</p>
                     <p class="duration">Jan 2024 - Present</p>
@@ -96,7 +203,9 @@
                         <li>Assist in training new employees</li>
                     </ul>
                 </div>
-                <div class="timeline-item">
+                
+                <!-- PHP Developer role -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
                     <h3>PHP Developer</h3>
                     <p class="company">Riyank Technologies</p>
                     <p class="duration">May 2022 - July 2022</p>
@@ -106,7 +215,9 @@
                         <li>Diagnosed and resolved technical issues in live environments</li>
                     </ul>
                 </div>
-                <div class="timeline-item">
+                
+                <!-- Project Intern role -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
                     <h3>Project Intern</h3>
                     <p class="company">Epitome Corporation Pvt. Ltd</p>
                     <p class="duration">Sept 2021 - Sept 2021</p>
@@ -118,46 +229,61 @@
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="animate-on-scroll">
+        <!-- Certifications section showcasing professional credentials -->
+        <section id="certifications" class="animate-on-scroll" data-aos="fade-up">
             <h2>Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-card">
+                <!-- JavaScript certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="100">
                     <h3>JavaScript Essential Training</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Google Analytics certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="150">
                     <h3>Google Analytics (GA) Essential Training</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Advanced Google Analytics certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="200">
                     <h3>Advanced Google Analytics (GA4)</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Git certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="250">
                     <h3>Git Version Control</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Sept 2024</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Python certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="300">
                     <h3>Python Programming</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Sept 2024</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Data Science certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="350">
                     <h3>Data Science for Engineers</h3>
                     <p class="issuer">IIDE - The Digital School</p>
                     <p class="date">May 2022</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- Azure GitHub certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="400">
                     <h3>Azure GitHub - Code to Cloud</h3>
                     <p class="issuer">Microsoft & GitHub</p>
                     <p class="date">Mar 2021</p>
                 </div>
-                <div class="certification-card">
+                
+                <!-- AWS certification -->
+                <div class="certification-card" data-aos="flip-up" data-aos-delay="450">
                     <h3>AWS Fundamentals: Going Cloud-Native</h3>
                     <p class="issuer">Amazon Cloud (Coursera)</p>
                     <p class="date">Oct 2020</p>
@@ -165,16 +291,24 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="animate-on-scroll">
+        <!-- Contact section with email link -->
+        <section id="contact" class="animate-on-scroll" data-aos="fade-up">
             <h2>Contact</h2>
             <p>Let's connect and discuss how we can work together!</p>
             <a href="mailto:mishraaniket267@gmail.com" class="btn">Email Me</a>
         </section>
 
-        <!-- Footer Section -->
+        <!-- Footer with made with love message and navigation links -->
         <footer>
-            <p>&copy; 2024 Aniket Mishra. All rights reserved.</p>
+            <!-- Made with love signature -->
+            <div class="made-with-love">
+                <span>Made with</span>
+                <span class="heart">❤</span>
+                <span>by Aniket</span>
+            </div>
+            <p class="copyright">© 2025 Aniket Mishra. All rights reserved.</p>
+            
+            <!-- Quick navigation links -->
             <div class="footer-links">
                 <a href="#intro">Home</a>
                 <a href="#skills">Skills</a>
@@ -184,7 +318,26 @@
             </div>
         </footer>
     </main>
+    
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+        <p>Loading Amazing Experience...</p>
+    </div>
 
+    <!-- Cursor follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- Main JavaScript for interactive functionality -->
     <script src="script.js"></script>
+    <!-- Script for generating placeholder images -->
+    <script src="create-placeholders.js"></script>
+    <!-- Enhanced animation libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <!-- Enhanced interactions script -->
+    <script src="enhanced.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /*
-* Date: 12/03/2025 - 25/03/2025
+* Date: 24/03/2025
 * Author: Aniket Mishra
-* Purpose: JavaScript functionality for portfolio website
+* Purpose: Main JavaScript functionality for portfolio website
 * Copyright © 2025 Aniket Mishra. All rights reserved.
 * This code may not be used without explicit permission and proper attribution.
 */
@@ -10,8 +10,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Safety wrapper to prevent script errors from breaking the page
     try {
-        // Initialize the portfolio website with performance optimizations
-        initPortfolio();
+        // Initialize theme
+        initTheme();
+        
+        // Initialize particle background
+        initParticles();
+        
+        // Event listeners for interactive elements
+        initEventListeners();
+        
+        // Initialize skill progress bars
+        initSkillBars();
+        
+        // Mobile navigation setup
+        initMobileNav();
+        
+        // Initialize scroll progress indicator
+        initScrollProgress();
         
         // Ensure page is visible
         document.body.style.visibility = 'visible';
@@ -35,45 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ensureSectionsVisible();
     }
 });
-
-// Initialize the portfolio website with performance optimizations
-(function() {
-    try {
-        // Show content immediately
-        document.body.style.opacity = 1;
-        
-        // Initialize core functionality first
-        initTheme();
-        
-        // Defer particle initialization which is resource-intensive
-        requestIdleCallback(() => {
-            initParticles();
-        }, { timeout: 1000 });
-        
-        // Initialize visible UI elements
-        initMobileNav();
-        initScrollProgress();
-        
-        // Use requestAnimationFrame for smoother loading
-        requestAnimationFrame(() => {
-            // Initialize UI enhancements with staggered timing
-            setTimeout(() => {
-                initSkillBars();
-            }, 200);
-            
-            setTimeout(() => {
-                initEventListeners();
-            }, 500);
-            
-            // Any additional non-critical initializations
-            console.log("Portfolio fully initialized!");
-        });
-    } catch (error) {
-        console.error("Initialization error:", error);
-        // Make sure the page is still visible even if initialization fails
-        document.body.style.opacity = 1;
-    }
-})();
 
 // Initialize theme based on stored preference or system preference
 function initTheme() {
@@ -165,95 +141,98 @@ function initParticles() {
     }
 
     try {
-        // Check device capabilities for appropriate optimization
+        // Check device capabilities - use simpler configuration on mobile/low-end devices
         const isLowEndDevice = window.navigator.hardwareConcurrency <= 4 || 
-                             !window.matchMedia("(min-width: 768px)").matches;
+                              !window.matchMedia("(min-width: 768px)").matches;
         
-        // Configure particles based on device capability
-        const isDarkTheme = document.body.getAttribute('data-theme') !== 'light';
-        const particleColor = isDarkTheme ? "#64ffda" : "#0a192f";
+        // Configure particles based on device capability and current theme
+        const isDarkTheme = document.documentElement.classList.contains('dark-theme');
         
-        // Device-specific configurations
-        let particleConfig;
-        
+        // Reduced configuration for low-end devices
         if (isLowEndDevice) {
-            // Ultra-light configuration for mobile/low-end devices
-            particleConfig = {
+            particlesJS('particles-js', {
                 "particles": {
                     "number": {
-                        "value": 15, // Very few particles
+                        "value": 30, // Reduced number
                         "density": {
                             "enable": true,
                             "value_area": 800
                         }
                     },
                     "color": {
-                        "value": particleColor
+                        "value": isDarkTheme ? "#64ffda" : "#00897b"
                     },
                     "shape": {
                         "type": "circle"
                     },
                     "opacity": {
-                        "value": 0.3,
-                        "random": false
+                        "value": 0.5,
+                        "random": false // Disable random for better performance
                     },
                     "size": {
-                        "value": 2,
+                        "value": 3,
                         "random": true,
                         "anim": {
-                            "enable": false
+                            "enable": false // Disable animation for better performance
                         }
                     },
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": particleColor,
-                        "opacity": 0.2,
+                        "color": isDarkTheme ? "#64ffda" : "#00897b",
+                        "opacity": 0.4,
                         "width": 1
                     },
                     "move": {
                         "enable": true,
                         "speed": 1,
                         "direction": "none",
-                        "random": false,
+                        "random": false, // Disable randomness
                         "straight": false,
                         "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false
-                        }
+                        "bounce": false
                     }
                 },
                 "interactivity": {
                     "detect_on": "canvas",
                     "events": {
                         "onhover": {
-                            "enable": false
+                            "enable": false // Disable hover interaction on mobile
                         },
                         "onclick": {
-                            "enable": false
+                            "enable": true,
+                            "mode": "push"
                         },
                         "resize": true
+                    },
+                    "modes": {
+                        "push": {
+                            "particles_nb": 2
+                        }
                     }
                 },
-                "retina_detect": false
-            };
+                "retina_detect": false // Disable retina detect for performance
+            });
         } else {
-            // Standard configuration for better devices
-            particleConfig = {
+            // Full configuration for high-end devices
+            particlesJS('particles-js', {
                 "particles": {
                     "number": {
-                        "value": 30,
+                        "value": 60, // Slightly reduced from original
                         "density": {
                             "enable": true,
                             "value_area": 800
                         }
                     },
                     "color": {
-                        "value": particleColor
+                        "value": isDarkTheme ? ["#64ffda", "#00bfa5", "#1de9b6", "#00e5ff"] : ["#00897b", "#00796b", "#006064", "#004d40"]
                     },
                     "shape": {
-                        "type": "circle"
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
                     },
                     "opacity": {
                         "value": 0.5,
@@ -278,20 +257,22 @@ function initParticles() {
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": particleColor,
+                        "color": isDarkTheme ? "#64ffda" : "#00897b",
                         "opacity": 0.4,
                         "width": 1
                     },
                     "move": {
                         "enable": true,
-                        "speed": 2,
+                        "speed": 1,
                         "direction": "none",
                         "random": true,
                         "straight": false,
                         "out_mode": "out",
                         "bounce": false,
                         "attract": {
-                            "enable": false
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
                         }
                     }
                 },
@@ -303,7 +284,8 @@ function initParticles() {
                             "mode": "grab"
                         },
                         "onclick": {
-                            "enable": false
+                            "enable": true,
+                            "mode": "push"
                         },
                         "resize": true
                     },
@@ -311,46 +293,163 @@ function initParticles() {
                         "grab": {
                             "distance": 140,
                             "line_linked": {
-                                "opacity": 0.8
+                                "opacity": 1
                             }
+                        },
+                        "push": {
+                            "particles_nb": 3
                         }
                     }
                 },
                 "retina_detect": true
-            };
+            });
         }
-        
-        // Initialize particles with optimized configuration
-        particlesJS('particles-js', particleConfig);
-        
-        // Store the current theme to detect changes
-        window.currentParticleTheme = isDarkTheme ? 'dark' : 'light';
-        
+
+        // Create a mutation observer to update particle colors when theme changes
+        // Only set this up for high-end devices
+        if (!isLowEndDevice) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        updateParticleColors();
+                    }
+                });
+            });
+            
+            observer.observe(document.documentElement, { attributes: true });
+        }
     } catch (error) {
-        console.error('Particles initialization error:', error);
-        
-        // Hide particles container on error to prevent visual issues
+        console.error('Error initializing particles:', error);
+        // If particles cause problems, make sure the background color is still set
         const particlesContainer = document.getElementById('particles-js');
         if (particlesContainer) {
-            particlesContainer.style.display = 'none';
+            particlesContainer.style.backgroundColor = document.documentElement.classList.contains('dark-theme') 
+                ? '#0a192f' 
+                : '#f5f5f7';
         }
     }
 }
 
-// Update particle colors when theme changes
+// Update particle colors based on current theme
 function updateParticleColors() {
-    const isDarkTheme = document.body.getAttribute('data-theme') !== 'light';
-    const newTheme = isDarkTheme ? 'dark' : 'light';
-    
-    // Only reinitialize if theme actually changed
-    if (window.currentParticleTheme !== newTheme) {
-        window.currentParticleTheme = newTheme;
-        
-        // Defer reinitialization to prevent UI blocking
-        setTimeout(() => {
-            initParticles();
-        }, 100);
+    if (window.pJSDom && window.pJSDom.length > 0) {
+        try {
+            const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+            const pJS = window.pJSDom[0].pJS;
+            
+            // Update particle colors based on theme
+            if (isDarkTheme) {
+                pJS.particles.color.value = ["#64ffda", "#00bfa5", "#1de9b6", "#00e5ff"];
+                pJS.particles.line_linked.color = "#64ffda";
+            } else {
+                pJS.particles.color.value = ["#00897b", "#00796b", "#006064", "#004d40"];
+                pJS.particles.line_linked.color = "#00897b";
+            }
+            
+            // Refresh particles to apply new colors
+            if (pJS.fn.particlesRefresh) {
+                pJS.fn.particlesRefresh();
+            }
+        } catch (error) {
+            console.error('Error updating particle colors:', error);
+        }
     }
+}
+
+// Get particles.js configuration based on current theme
+function getParticlesConfig() {
+    const isLightTheme = document.body.getAttribute('data-theme') === 'light';
+    const particleColor = isLightTheme ? '#0a192f' : '#64ffda';
+    const particleOpacity = isLightTheme ? 0.2 : 0.5;
+    
+    return {
+        particles: {
+            number: {
+                value: 50,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: particleColor
+            },
+            shape: {
+                type: "circle",
+                stroke: {
+                    width: 0,
+                    color: "#000000"
+                }
+            },
+            opacity: {
+                value: particleOpacity,
+                random: false,
+                anim: {
+                    enable: false,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: false,
+                    speed: 40,
+                    size_min: 0.1,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: particleColor,
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+                attract: {
+                    enable: false,
+                    rotateX: 600,
+                    rotateY: 1200
+                }
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: "grab"
+                },
+                onclick: {
+                    enable: true,
+                    mode: "push"
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 1
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    };
 }
 
 // Initialize event listeners for interactive elements
@@ -388,70 +487,28 @@ function initEventListeners() {
     initCursorFollower();
 }
 
-// Initialize skill progress bars with performance optimizations
+// Initialize progress bar animations for skill levels
 function initSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress-bar');
-    if (!skillBars.length) return;
     
-    // Create a single observer for all skill bars
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Get the progress bar and progress value
                 const bar = entry.target;
                 const progress = bar.getAttribute('data-progress');
-                const progressBar = bar.querySelector('.progress');
-                
-                // Set initial width to 0
-                progressBar.style.width = '0%';
-                
-                // Schedule animation in next animation frame for better performance
-                requestAnimationFrame(() => {
-                    // Add transition in a separate animation frame to ensure it applies
-                    progressBar.style.transition = 'width 0.8s ease-out';
-                    
-                    // Slight delay before animating to ensure transition is applied
-                    setTimeout(() => {
-                        progressBar.style.width = `${progress}%`;
-                    }, 50);
-                });
-                
-                // Stop observing after animation starts
+                if (progress) {
+                    bar.style.width = `${progress}%`;
+                }
                 observer.unobserve(bar);
             }
         });
-    }, { 
-        threshold: 0.1, // Lower threshold for earlier triggering
-        rootMargin: '20px' // Slightly expand the intersection area
-    });
+    }, { threshold: 0.2 });
     
-    // Process skill bars in batches for better performance
-    let index = 0;
-    const batchSize = 5; // Process 5 bars at a time
-    
-    function processBatch() {
-        const currentBatch = Array.from(skillBars).slice(index, index + batchSize);
-        if (currentBatch.length === 0) return;
-        
-        // Process current batch
-        currentBatch.forEach(bar => {
-            // Initially set to 0 width
-            const progressBar = bar.querySelector('.progress');
-            progressBar.style.width = '0%';
-            
-            // Start observing
+    skillBars.forEach(bar => {
+        // Reset width to 0 for animation
+        bar.style.width = '0%';
         observer.observe(bar);
     });
-        
-        // Schedule next batch
-        index += batchSize;
-        if (index < skillBars.length) {
-            setTimeout(processBatch, 100);
-        }
-    }
-    
-    // Start processing in batches
-    processBatch();
 }
 
 // Mobile navigation functionality
@@ -489,40 +546,23 @@ function initCursorFollower() {
         const cursor = document.querySelector('.cursor-follower');
         
         if (cursor) {
-            // Make cursor visible
-            cursor.style.display = 'block';
-            
-            // Use requestAnimationFrame for smoother cursor movement
             document.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    // Position directly follows mouse pointer
-                    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-                });
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
             });
             
-            // Add active class when hovering over interactive elements
-            const interactives = document.querySelectorAll('a, button, .gallery-item, input, .skill-card');
+            // Add active class when hovering over links or buttons
+            const interactives = document.querySelectorAll('a, button, .gallery-item, input');
             interactives.forEach(item => {
                 item.addEventListener('mouseenter', () => {
-                    cursor.style.width = '30px';
-                    cursor.style.height = '30px';
-                    cursor.style.opacity = '0.9';
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.mixBlendMode = 'difference';
                 });
                 
                 item.addEventListener('mouseleave', () => {
-                    cursor.style.width = '20px';
-                    cursor.style.height = '20px';
-                    cursor.style.opacity = '0.7';
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.mixBlendMode = 'difference';
                 });
-            });
-            
-            // Handle mouse leaving window
-            document.addEventListener('mouseleave', () => {
-                cursor.style.opacity = '0';
-            });
-            
-            document.addEventListener('mouseenter', () => {
-                cursor.style.opacity = '0.7';
             });
         }
     }
@@ -610,62 +650,6 @@ function ensureSectionsVisible() {
             section.style.opacity = '1';
             section.style.display = 'block';
             section.style.zIndex = '10';
-            
-            // Ensure grid layouts have correct display
-            const grids = section.querySelectorAll('.skills-grid, .certifications-grid, .timeline');
-            grids.forEach(grid => {
-                grid.style.display = 'grid';
-                grid.style.visibility = 'visible';
-                grid.style.opacity = '1';
-            });
         }
-    });
-}
-
-// Polyfill for requestIdleCallback for browsers that don't support it
-window.requestIdleCallback = window.requestIdleCallback || 
-    function(callback, options) {
-        const start = Date.now();
-        return setTimeout(function() {
-            callback({
-                didTimeout: false,
-                timeRemaining: function() {
-                    return Math.max(0, 50 - (Date.now() - start));
-                }
-            });
-        }, options?.timeout || 1);
-    };
-
-// Initialize the portfolio website with sequential loading for better performance
-function initPortfolio() {
-    // First, ensure critical UI is responsive
-    initTheme();
-    
-    // Show main content immediately
-    document.body.style.opacity = 1;
-    
-    // Progressively load features based on priority
-    const initSequence = [
-        // Essential UI first
-        { fn: initMobileNav, delay: 0 },
-        { fn: initScrollProgress, delay: 100 },
-        
-        // Content enhancements
-        { fn: initSkillBars, delay: 300 },
-        
-        // Non-critical visual effects last
-        { fn: initEventListeners, delay: 500 },
-        { fn: initParticles, delay: 800 }
-    ];
-    
-    // Execute initialization sequence
-    initSequence.forEach(task => {
-        setTimeout(() => {
-            try {
-                task.fn();
-            } catch (error) {
-                console.warn(`Error initializing ${task.fn.name}:`, error);
-            }
-        }, task.delay);
     });
 }

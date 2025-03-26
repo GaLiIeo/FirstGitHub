@@ -7,8 +7,11 @@
     "start": "serve -s .",
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build:prod": "npm run optimize-images && npm run build",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "check-links": "node scripts/check-links.js",
     "test": "echo \"No tests specified\""
   },
   "repository": {
@@ -30,6 +33,7 @@
   "homepage": "https://github.com/GaLiIeo/aniket.github.io#readme",
   "dependencies": {
     "aos": "^2.3.4",
+    "core-js": "^3.30.2",
     "gsap": "^3.11.5",
     "locomotive-scroll": "^4.1.4",
     "particles.js": "^2.0.0"
@@ -37,11 +41,21 @@
   "devDependencies": {
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
+    "axios": "^1.4.0",
     "babel-loader": "^9.1.2",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.0",
+    "cssnano": "^6.0.1",
     "eslint": "^8.42.0",
     "html-webpack-plugin": "^5.5.1",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "imagemin-webp": "^7.0.0",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.24",
     "postcss-loader": "^7.3.2",

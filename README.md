@@ -17,6 +17,11 @@ A modern, interactive portfolio website showcasing my skills, experience, and pr
 - Custom cursor follower for interactive elements
 - Loading screen with animation
 - Webpack bundling for optimized assets
+- Automatic image optimization
+- WebP image format support
+- Broken link checking
+- Lighthouse performance monitoring
+- Comprehensive CI/CD pipeline
 
 ## Technologies Used
 
@@ -30,6 +35,9 @@ A modern, interactive portfolio website showcasing my skills, experience, and pr
 - AOS for scroll-based animations
 - Webpack for asset bundling and optimization
 - ESLint and Prettier for code quality
+- Imagemin for image optimization
+- Lighthouse CI for performance monitoring
+- GitHub Actions for CI/CD
 
 ## Getting Started
 
@@ -62,10 +70,42 @@ To create an optimized production build:
 
 ```bash
 npm install  # If you haven't already installed dependencies
-npm run build
+npm run build:prod  # Includes image optimization
 ```
 
 The built files will be in the `dist` directory.
+
+## Quality Assurance
+
+This project includes several tools to ensure high quality:
+
+### Linting and Formatting
+
+```bash
+# Run ESLint to check for code issues
+npm run lint
+
+# Run Prettier to format code
+npm run format
+```
+
+### Link Checking
+
+```bash
+# Check for broken links
+npm run check-links
+```
+
+### Image Optimization
+
+```bash
+# Optimize images and create WebP versions
+npm run optimize-images
+```
+
+### Performance Testing
+
+The GitHub Actions workflow automatically runs Lighthouse CI to test performance metrics on each push.
 
 ## Deployment
 
@@ -81,6 +121,7 @@ To deploy manually:
 
 2. Or use these commands:
    ```bash
+   npm run build:prod
    git add .
    git commit -m "Your commit message"
    git push origin main
@@ -101,13 +142,20 @@ To deploy manually:
 ├── public/                 # Static assets
 │   ├── image/              # Images folder
 │   └── scripts/            # Additional scripts
+├── scripts/                # Build and utility scripts
+│   ├── check-links.js      # Link checker script
+│   └── optimize-images.js  # Image optimization script
 ├── .github/                # GitHub configuration
 │   ├── workflows/          # GitHub Actions workflows
 │   └── CODEOWNERS          # Repository ownership
 ├── .eslintrc.json          # ESLint configuration
 ├── .prettierrc             # Prettier configuration
-├── package.json            # npm dependencies
+├── .babelrc                # Babel configuration
+├── .browserslistrc         # Browser compatibility config
+├── postcss.config.js       # PostCSS configuration
 ├── webpack.config.js       # Webpack configuration
+├── lighthouserc.js         # Lighthouse CI configuration
+├── package.json            # npm dependencies
 └── README.md               # Project documentation
 ```
 

@@ -1,5 +1,5 @@
 <!--
-Date: 24/03/2025
+Date: 12/03/2025 - 25/03/2025
 Author: Aniket Mishra
 Purpose: Professional portfolio website with interactive elements
 Copyright © 2025 Aniket Mishra. All rights reserved.
@@ -28,13 +28,21 @@ This code may not be used without explicit permission and proper attribution.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 </head>
-<body data-scroll-container>
+<body>
     <!-- Interactive particle background canvas -->
     <div id="particles-js"></div>
 
     <!-- Theme toggle button to switch between light and dark modes -->
     <div class="color-switch">
-        <button id="theme-toggle">Toggle Theme</button>
+        <button id="theme-toggle" aria-label="Toggle light/dark theme"></button>
+    </div>
+
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+        <p>Loading...</p>
     </div>
 
     <!-- Left side panel with profile information and social links -->
@@ -45,7 +53,7 @@ This code may not be used without explicit permission and proper attribution.
                 <img src="public/image/aniket photo.png" alt="Aniket Mishra">
             </div>
             <h1>Aniket Mishra</h1>
-            <p class="typing-text" data-text="Business & Information Systems Specialist"></p>
+            <p>Business & Information Systems Specialist</p>
         </div>
         
         <!-- Social media and contact links with icons -->
@@ -79,24 +87,21 @@ This code may not be used without explicit permission and proper attribution.
     </nav>
 
     <!-- Main content area with all portfolio sections -->
-    <main data-scroll-section>
+    <main>
         <!-- Introduction section with personal greeting and resume link -->
-        <section id="intro" class="animate-on-scroll" data-aos="fade-up">
+        <section id="intro">
             <h2>Hi, I'm Aniket</h2>
-            <p class="intro-text" data-text="I'm a Business & Information Systems Specialist with experience in web development, cloud services, and AI technologies."></p>
+            <p>I'm a Business & Information Systems Specialist with experience in web development, cloud services, and AI technologies.</p>
             <a href="Aniket.pdf" target="_blank" class="btn">View Resume</a>
         </section>
 
-        <!-- Skills section with progress bars and technology categories -->
-        <section id="skills" class="animate-on-scroll" data-aos="fade-up">
-            <h2>Skills</h2>
+        <!-- Skills section with categories and icons -->
+        <section id="skills">
+            <h2>My Skills</h2>
             <div class="skills-grid">
-                <!-- Programming and development skills card -->
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                <!-- Programming and Development skills -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>Programming & Development</h3>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" data-progress="90"></div>
-                    </div>
                     <ul>
                         <li><i class="fab fa-js"></i> JavaScript</li>
                         <li><i class="fab fa-python"></i> Python</li>
@@ -105,12 +110,9 @@ This code may not be used without explicit permission and proper attribution.
                     </ul>
                 </div>
                 
-                <!-- Cloud and DevOps skills card -->
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                <!-- Cloud and DevOps skills -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
                     <h3>Cloud & DevOps</h3>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" data-progress="85"></div>
-                    </div>
                     <ul>
                         <li><i class="fab fa-microsoft"></i> Azure</li>
                         <li><i class="fab fa-aws"></i> AWS (EC2, S3)</li>
@@ -119,12 +121,9 @@ This code may not be used without explicit permission and proper attribution.
                     </ul>
                 </div>
                 
-                <!-- Databases and API skills card -->
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+                <!-- Databases and APIs skills -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
                     <h3>Databases & APIs</h3>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" data-progress="80"></div>
-                    </div>
                     <ul>
                         <li><i class="fas fa-database"></i> MySQL</li>
                         <li><i class="fas fa-server"></i> REST APIs</li>
@@ -132,42 +131,78 @@ This code may not be used without explicit permission and proper attribution.
                         <li><i class="fas fa-robot"></i> AI Technologies</li>
                     </ul>
                 </div>
+
+                <!-- Web Technologies skills -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Web Technologies</h3>
+                    <ul>
+                        <li><i class="fab fa-html5"></i> HTML5</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i class="fab fa-react"></i> React</li>
+                        <li><i class="fas fa-mobile-alt"></i> Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education section with academic background -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <!-- Post Graduation -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="item-header">
+                        <h3>Post Graduation, Business and Information System Architecture</h3>
+                        <p class="company">Fanshawe College, London, ON, Canada</p>
+                        <p class="duration">Jan 2024 - Present</p>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Relevant Coursework: Business Analysis, Project Management, Business Intelligence, Cloud Computing, Web Development</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Bachelor's Degree -->
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="item-header">
+                        <h3>Bachelor of Engineer, Information Technology</h3>
+                        <p class="company">Gujarat Technological University, Gujarat, India</p>
+                        <p class="duration">June 2019 - May 2023</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p class="highlight">CGPA: 8.37</p>
+                        <ul>
+                            <li>Relevant Coursework: Data Structures, OOP, AI</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Portfolio projects gallery with interactive overlays -->
-        <section id="gallery" class="animate-on-scroll" data-aos="fade-up">
+        <section id="gallery">
             <h2>Portfolio Projects</h2>
             <div class="photo-gallery">
-                <!-- Web Application project showcase -->
+                <!-- Cortrade.co project showcase -->
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="gallery-item-inner">
-                        <img src="public/image/projects/web-project.jpg" alt="Web Application Project">
+                        <img src="public/image/projects/cortrade.jpg" alt="Cortrade.co">
                         <div class="gallery-overlay">
-                            <h3>Web Application</h3>
-                            <p>Full-stack development with React and Node.js</p>
+                            <h3>Cortrade.co</h3>
+                            <p>E-commerce trading platform for commodities</p>
                         </div>
                     </div>
+                    <a href="https://www.cortrade.co" target="_blank" class="project-link" aria-label="Visit Cortrade.co"></a>
                 </div>
                 
-                <!-- Cloud Architecture project showcase -->
+                <!-- SocialCop project showcase -->
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="gallery-item-inner">
-                        <img src="public/image/projects/cloud-project.jpg" alt="Cloud Infrastructure">
+                        <img src="public/image/projects/socialcop.jpg" alt="SocialCop">
                         <div class="gallery-overlay">
-                            <h3>Cloud Architecture</h3>
-                            <p>Enterprise solutions using AWS and Azure</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- AI and Machine Learning project showcase -->
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="gallery-item-inner">
-                        <img src="public/image/projects/ai-project.jpg" alt="Data Analytics">
-                        <div class="gallery-overlay">
-                            <h3>AI & Machine Learning</h3>
-                            <p>Intelligent data analytics solutions</p>
+                            <h3>SocialCop</h3>
+                            <p>WordPress web app for reporting traffic issues</p>
                         </div>
                     </div>
                 </div>
@@ -175,116 +210,115 @@ This code may not be used without explicit permission and proper attribution.
         </section>
 
         <!-- Experience section with timeline of professional roles -->
-        <section id="experience" class="animate-on-scroll" data-aos="fade-up">
+        <section id="experience">
             <h2>Experience</h2>
             <div class="timeline">
                 <!-- Student Ambassador role -->
                 <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                    <h3>Student Ambassador</h3>
-                    <p class="company">BLACKBOX AI</p>
-                    <p class="duration">Sept 2024 - Present</p>
-                    <ul>
-                        <li>Promote the BLACKBOX AI Mavericks program within the student community</li>
-                        <li>Serve as a key point of contact for program updates and discussions</li>
-                        <li>Encourage peer participation in AI-related activities</li>
-                        <li>Assist in providing resources and guidance to students interested in AI</li>
-                    </ul>
+                    <div class="item-header">
+                        <h3>Student Ambassador</h3>
+                        <p class="company">BLACKBOX AI</p>
+                        <p class="duration">Sept 2024 - Jan 2025</p>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Promote the BLACKBOX AI Mavericks program within the student community</li>
+                            <li>Serve as a key point of contact for program updates and discussions</li>
+                            <li>Encourage peer participation in AI-related activities</li>
+                            <li>Assist in providing resources and guidance to students interested in AI</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Tim Hortons role -->
+
+                <!-- MyCaptain role -->
                 <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                    <h3>Team Member</h3>
-                    <p class="company">Tim Hortons</p>
-                    <p class="duration">Jan 2024 - Present</p>
-                    <ul>
-                        <li>Provide excellent customer service and handle customer orders</li>
-                        <li>Maintain inventory levels and ensure workspace cleanliness</li>
-                        <li>Operate POS system and manage transactions</li>
-                        <li>Assist in training new employees</li>
-                    </ul>
+                    <div class="item-header">
+                        <h3>Team Member</h3>
+                        <p class="company">MyCaptain, Ahmedabad, Gujarat, India</p>
+                        <p class="duration">Oct 2020 - Nov 2020</p>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Acquired hands-on knowledge in the field of sales and marketing through real-world experience.</li>
+                            <li>Volunteered in MyCaptain's Campus Ambassador Program.</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <!-- PHP Developer role -->
                 <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-                    <h3>PHP Developer</h3>
-                    <p class="company">Riyank Technologies</p>
-                    <p class="duration">May 2022 - July 2022</p>
-                    <ul>
-                        <li>Developed server-side and user-side code using PHP, HTML, CSS, and JavaScript</li>
-                        <li>Created software components linking programs to online services</li>
-                        <li>Diagnosed and resolved technical issues in live environments</li>
-                    </ul>
-                </div>
-                
-                <!-- Project Intern role -->
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
-                    <h3>Project Intern</h3>
-                    <p class="company">Epitome Corporation Pvt. Ltd</p>
-                    <p class="duration">Sept 2021 - Sept 2021</p>
-                    <ul>
-                        <li>Assisted in solving technical problems and understanding OBS Studio</li>
-                        <li>Coordinated meetings and maintained records for multinational corporations</li>
-                    </ul>
+                    <div class="item-header">
+                        <h3>PHP Developer</h3>
+                        <p class="company">Riyank Technologies</p>
+                        <p class="duration">May 2022 - July 2022</p>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Developed server-side and user-side code using PHP, HTML, CSS, and JavaScript</li>
+                            <li>Created software components linking programs to online services</li>
+                            <li>Diagnosed and resolved technical issues in live environments</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Certifications section showcasing professional credentials -->
-        <section id="certifications" class="animate-on-scroll" data-aos="fade-up">
+        <section id="certifications">
             <h2>Certifications</h2>
             <div class="certifications-grid">
                 <!-- JavaScript certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="100">
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>JavaScript Essential Training</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
                 
                 <!-- Google Analytics certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="150">
-                    <h3>Google Analytics (GA) Essential Training</h3>
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="150">
+                    <h3>Google Analytics Essential</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
                 
                 <!-- Advanced Google Analytics certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="200">
-                    <h3>Advanced Google Analytics (GA4)</h3>
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Advanced Google Analytics</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Dec 2024</p>
                 </div>
                 
                 <!-- Git certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="250">
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="250">
                     <h3>Git Version Control</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Sept 2024</p>
                 </div>
                 
                 <!-- Python certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="300">
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="300">
                     <h3>Python Programming</h3>
                     <p class="issuer">LinkedIn Learning</p>
                     <p class="date">Sept 2024</p>
                 </div>
                 
                 <!-- Data Science certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="350">
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="350">
                     <h3>Data Science for Engineers</h3>
                     <p class="issuer">IIDE - The Digital School</p>
                     <p class="date">May 2022</p>
                 </div>
                 
                 <!-- Azure GitHub certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="400">
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="400">
                     <h3>Azure GitHub - Code to Cloud</h3>
                     <p class="issuer">Microsoft & GitHub</p>
                     <p class="date">Mar 2021</p>
                 </div>
                 
                 <!-- AWS certification -->
-                <div class="certification-card" data-aos="flip-up" data-aos-delay="450">
-                    <h3>AWS Fundamentals: Going Cloud-Native</h3>
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="450">
+                    <h3>AWS Cloud-Native</h3>
                     <p class="issuer">Amazon Cloud (Coursera)</p>
                     <p class="date">Oct 2020</p>
                 </div>
@@ -292,7 +326,7 @@ This code may not be used without explicit permission and proper attribution.
         </section>
 
         <!-- Contact section with email link -->
-        <section id="contact" class="animate-on-scroll" data-aos="fade-up">
+        <section id="contact">
             <h2>Contact</h2>
             <p>Let's connect and discuss how we can work together!</p>
             <a href="mailto:mishraaniket267@gmail.com" class="btn">Email Me</a>
@@ -310,34 +344,125 @@ This code may not be used without explicit permission and proper attribution.
             
             <!-- Quick navigation links -->
             <div class="footer-links">
-                <a href="#intro">Home</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
+                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Home</a>
+                <a href="#skills" onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'}); return false;">Skills</a>
+                <a href="#experience" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'}); return false;">Experience</a>
+                <a href="#certifications" onclick="document.getElementById('certifications').scrollIntoView({behavior: 'smooth'}); return false;">Certifications</a>
+                <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'}); return false;">Contact</a>
             </div>
         </footer>
     </main>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
     
-    <!-- Loading screen -->
-    <div class="loading-screen">
-        <div class="loader">
-            <div class="loader-inner"></div>
-        </div>
-        <p>Loading Amazing Experience...</p>
-    </div>
-
-    <!-- Cursor follower -->
+    <!-- Custom cursor follower element -->
     <div class="cursor-follower"></div>
-
-    <!-- Main JavaScript for interactive functionality -->
-    <script src="script.js"></script>
-    <!-- Script for generating placeholder images -->
-    <script src="create-placeholders.js"></script>
-    <!-- Enhanced animation libraries -->
+    
+    <!-- External JavaScript libraries and custom scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-    <!-- Enhanced interactions script -->
+    
+    <!-- Custom scripts -->
+    <script src="script.js"></script>
     <script src="enhanced.js"></script>
+    <script src="public/scripts/generate-placeholders.js"></script>
+    
+    <!-- Enhanced fallback script for ensuring content visibility -->
+    <script>
+        // This script ensures all content is visible even if other scripts fail
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen after a short delay
+            setTimeout(function() {
+                const loadingScreen = document.querySelector('.loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                    loadingScreen.style.display = 'none';
+                }
+            }, 500); // Reduced time for faster display
+            
+            // Make sure all animations are visible
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+                el.classList.add('visible');
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+            
+            // Initialize AOS with a fallback
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true
+                });
+            }
+            
+            // COMPREHENSIVE VISIBILITY FIX: Ensure all critical content is visible
+            ['skills', 'education', 'experience', 'certifications'].forEach(function(id) {
+                var section = document.getElementById(id);
+                if (section) {
+                    // First, make the section itself visible
+                    section.style.visibility = 'visible !important';
+                    section.style.opacity = '1 !important';
+                    section.style.display = 'block !important';
+                    section.style.position = 'relative';
+                    section.style.zIndex = '10';
+                    
+                    // Then ensure ALL elements inside are visible
+                    var children = section.querySelectorAll('*');
+                    for (var i = 0; i < children.length; i++) {
+                        var el = children[i];
+                        el.style.visibility = 'visible';
+                        el.style.opacity = '1';
+                        
+                        // Set display based on element type
+                        if (el.classList.contains('skills-grid') || 
+                            el.classList.contains('timeline') || 
+                            el.classList.contains('certifications-grid')) {
+                            el.style.display = 'grid';
+                        } else if (el.tagName === 'UL') {
+                            el.style.display = 'block';
+                        } else if (el.tagName === 'OL') {
+                            el.style.display = 'block';
+                        } else if (el.tagName === 'LI') {
+                            el.style.display = 'list-item';
+                        } else {
+                            el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+                        }
+                    }
+                }
+            });
+            
+            // Special handling for specific container elements
+            ['.skills-grid', '.timeline', '.certifications-grid'].forEach(function(selector) {
+                document.querySelectorAll(selector).forEach(function(el) {
+                    el.style.display = 'grid';
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                });
+            });
+            
+            // Special handling for all content cards
+            ['.skill-card', '.timeline-item', '.certification-card'].forEach(function(selector) {
+                document.querySelectorAll(selector).forEach(function(el) {
+                    el.style.display = 'block';
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                });
+            });
+            
+            // Force display for lists and list items
+            document.querySelectorAll('ul, ol').forEach(function(el) {
+                el.style.display = 'block';
+                el.style.visibility = 'visible';
+                el.style.opacity = '1';
+            });
+            
+            document.querySelectorAll('li').forEach(function(el) {
+                el.style.display = 'list-item';
+                el.style.visibility = 'visible';
+                el.style.opacity = '1';
+            });
+        });
+    </script>
 </body>
 </html>
